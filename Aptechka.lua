@@ -208,6 +208,7 @@ local defaults = {
             },
         },
         widgetConfig = config.DefaultWidgets,
+        confSnippets = {},
     },
     profile = {
         point = "CENTER",
@@ -645,6 +646,11 @@ function Aptechka.PLAYER_LOGIN(self,event,arg1)
     SLASH_APTROLEPOLL1= "/rolepoll"
     SLASH_APTROLEPOLL2= "/rolecheck"
     SlashCmdList["APTROLEPOLL"] = InitiateRolePoll
+
+    LoadAddOn("AptechkaOptions")
+    C_Timer.After(3, function()
+        Aptechka:OpenSnippets()
+    end)
 
     if config.LOSStatus then
         self:RegisterEvent("UNIT_SPELLCAST_SENT")
